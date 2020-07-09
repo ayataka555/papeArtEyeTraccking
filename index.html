@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>pape art</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="requestPermissionButton">ジャイロを許可する</div>
+  <div class="pape-wrap">
+    <img src="./pape_base.png" alt="" class="pape-base">
+    <img src="./eye.png" alt="" class="pape-eye">
+  </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- <script src="js/three/three.min.js"></script>
+<script src="js/three/DeviceOrientationControls.js"></script>
+<script src="js/three/OrbitControls.js"></script>
+<script src="js/three/Detector.js"></script> -->
+<script>
+(function(){
+  let yOffset = 0;
+  let xOffset = 0;
+  $('.pape-eye').css("top", yOffset + "px");
+  $('.pape-eye').css("left", "calc(50% - " + parseInt(200 - xOffset) + "px)");
+})();
+</script>
+</html>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.hoge {
+  color: white;
+  font-size:26px;
+}
+
+body {
+  background: #9d9d9d;
+}
+
+.pape-wrap{
+  margin: 20px auto;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.pape-base {
+  max-height: 100vh;
+  width: 400px;
+}
+
+.pape-eye {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 250px);
+  z-index: 1;
+  width: 400px;
+}
+
+.requestPermissionButton {
+  background: white;
+  color: #333;
+  border-radius: 8px;
+  text-align: center;
+  padding: 10px 0;
+  position: absolute;
+  top: 30px;
+  width: 200px;
+  left: calc(50% - 100px);
+  z-index: 1;
+}
+</style>
