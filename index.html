@@ -13,7 +13,9 @@
     <img src="./pape_base.png" alt="" class="pape-base">
     <img src="./eye.png" alt="" class="pape-eye">
   </div>
-
+  <div class="debug-area">
+      aaa
+  </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <!-- <script src="js/three/three.min.js"></script>
@@ -22,6 +24,10 @@
 <script src="js/three/Detector.js"></script> -->
 <script>
 (function(){
+  if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+    // iOS 13+
+    popupOpen("requestPermissionPopup");
+  }
   let yOffset = 0;
   let xOffset = 0;
   $('.pape-eye').css("top", yOffset + "px");
@@ -77,5 +83,11 @@ body {
   width: 200px;
   left: calc(50% - 100px);
   z-index: 2;
+  display: block;
+}
+
+.debug-area {
+  background: white;
+
 }
 </style>
