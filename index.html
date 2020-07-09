@@ -18,10 +18,6 @@
   </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<!-- <script src="js/three/three.min.js"></script>
-<script src="js/three/DeviceOrientationControls.js"></script>
-<script src="js/three/OrbitControls.js"></script>
-<script src="js/three/Detector.js"></script> -->
 <script>
 function clickRequestDeviceSensor() {
   DeviceOrientationEvent.requestPermission().then(function (response) {
@@ -36,22 +32,21 @@ function clickRequestDeviceSensor() {
 
 function deviceOrientation(e) {
   e.preventDefault();
-  const alpha = e.alpha;   //. 北極方向に対する向きの角度
-  const beta = e.beta;      //. 前後の傾き角度
-  const gamma = e.gamma;  //. 左右の傾き角度
+  const alpha = e.alpha;
+  const beta = e.beta;
+  const gamma = e.gamma;
   $('.debug-area').html("alfa:" + alpha + "\n" + "beta:" + beta + "\n"+ "gamma:" + gamma );
 
-  let yOffset = parseInt(beta/10);
-  let xOffset = parseInt(gamma/10);
-  $('.pape-eye').css("top", yOffset + "px");
-  $('.pape-eye').css("left", "calc(50% - " + parseInt(200 - xOffset) + "px)");
-  return alpha, beta, gamma;
+  let yOffset = parseInt(beta/5);
+  let xOffset = parseInt(gamma/5);
+  $('.pape-eye').css("top", -1 * yOffset + "px");
+  $('.pape-eye').css("left", "calc(50% - " + parseInt(200 + xOffset) + "px)");
 }
 
 (function(){
   if (window.DeviceOrientationEvent) {
      if (!(DeviceOrientationEvent.requestPermission && typeof DeviceOrientationEvent.requestPermission === 'function')) {
-       $('.debug-area').html("no support device");
+       $('.requestPermissionButton').html("no support device");
        return;
      }
   }
