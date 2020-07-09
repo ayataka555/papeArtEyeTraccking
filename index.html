@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta property="og:image" content="./ogp.png" />
   <title>pape art</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -32,8 +34,8 @@ function deviceOrientation(e) {
   const alpha = e.alpha;
   const beta = e.beta;
   const gamma = e.gamma;
-  let yOffset = parseInt(beta/8);
-  let xOffset = parseInt(gamma/8å);
+  let yOffset = parseInt(beta/10) + 1;
+  let xOffset = parseInt(gamma/10) + 1;
   $('.pape-eye').css("top", -1 * yOffset + "px");
   $('.pape-eye').css("left", "calc(50% - " + parseInt(200 + xOffset) + "px)");
 }
