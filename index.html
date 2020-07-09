@@ -24,13 +24,9 @@
 <script src="js/three/Detector.js"></script> -->
 <script>
 (function(){
-  requestPermission = () => {
-    DeviceOrientationEvent.requestPermission().then(response => {
-      if (response === 'granted') {
-        $('.debug-area').html("ok")
-      }
-    }).catch(console.error);
-  };
+  if (typeof DeviceOrientationEvent.requestPermission === "function") {
+    $(".debug-area").html("ok")
+  }
   let yOffset = 0;
   let xOffset = 0;
   $('.pape-eye').css("top", yOffset + "px");
@@ -91,6 +87,5 @@ body {
 
 .debug-area {
   background: white;
-
 }
 </style>
