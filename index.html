@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <a class="requestPermissionButton" onclick="clickRequestDeviceSensor()" href="javascript:void(0);">ジャイロを許可する</a>
+  <div class="requestPermissionButton" onclick="clickRequestDeviceSensor()">ジャイロを許可する</div>
   <div class="pape-wrap">
     <img src="./pape_base.png" alt="" class="pape-base">
     <img src="./eye.png" alt="" class="pape-eye">
@@ -33,13 +33,25 @@ function clickRequestDeviceSensor() {
     console.log(e);
   });
 }
+
+function deviceOrientation(e) {
+  e.preventDefault();
+  let alpha = e.alpha;   //. 北極方向に対する向きの角度
+  let beta = e.beta;      //. 前後の傾き角度
+  let gamma = e.gamma;  //. 左右の傾き角度
+  $('.debug-area').append("alfa:" + alpha);
+  $('.debug-area').append("beta:" + beta );
+  $('.debug-area').append("gamma:" + gamma);
+}
+
 (function(){
   if (window.DeviceOrientationEvent) {
      if (!(DeviceOrientationEvent.requestPermission && typeof DeviceOrientationEvent.requestPermission === 'function')) {
-       $('.requestPermissionButton').html("no support device");
+       $('.debug-area').html("no support device");
        return;
      }
   }
+
   let yOffset = 0;
   let xOffset = 0;
   $('.pape-eye').css("top", yOffset + "px");
