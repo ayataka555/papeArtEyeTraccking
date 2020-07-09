@@ -13,9 +13,6 @@
     <img src="./pape_base.png" alt="" class="pape-base">
     <img src="./eye.png" alt="" class="pape-eye">
   </div>
-  <div class="debug-area">
-      aaa
-  </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
@@ -35,10 +32,8 @@ function deviceOrientation(e) {
   const alpha = e.alpha;
   const beta = e.beta;
   const gamma = e.gamma;
-  $('.debug-area').html("alfa:" + alpha + "\n" + "beta:" + beta + "\n"+ "gamma:" + gamma );
-
-  let yOffset = parseInt(beta/5);
-  let xOffset = parseInt(gamma/5);
+  let yOffset = parseInt(beta/8);
+  let xOffset = parseInt(gamma/8å);
   $('.pape-eye').css("top", -1 * yOffset + "px");
   $('.pape-eye').css("left", "calc(50% - " + parseInt(200 + xOffset) + "px)");
 }
