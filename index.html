@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <a class="requestPermissionButton" onclick="requestPermission()" href="javascript:void(0);">ジャイロを許可する</a>
+  <a class="requestPermissionButton" onclick="clickRequestDeviceSensor()" href="javascript:void(0);">ジャイロを許可する</a>
   <div class="pape-wrap">
     <img src="./pape_base.png" alt="" class="pape-base">
     <img src="./eye.png" alt="" class="pape-eye">
@@ -23,10 +23,22 @@
 <script src="js/three/OrbitControls.js"></script>
 <script src="js/three/Detector.js"></script> -->
 <script>
+function clickRequestDeviceSensor() {
+  DeviceOrientationEvent.requestPermission().then(function (response) {
+    if (response === 'granted') {
+      window.addEventListener("deviceorientation", deviceOrientation);
+      $('.requestPermissionButton').css('display', 'none');
+    }
+  }).catch(function (e) {
+    console.log(e);
+  });
+}
 (function(){
-  if (typeof DeviceOrientationEvent.requestPermission === "function") {
-    popupOpen("requestPermissionPopup");
-    $(".debug-area").html("ok")
+  if (window.DeviceOrientationEvent) {
+     if (!(DeviceOrientationEvent.requestPermission && typeof DeviceOrientationEvent.requestPermission === 'function')) {
+       $('.requestPermissionButton').html("no support device");
+       return;
+     }
   }
   let yOffset = 0;
   let xOffset = 0;
@@ -67,7 +79,7 @@ body {
 .pape-eye {
   position: absolute;
   top: 0;
-  left: calc(50% - 250px);
+  left: calc(50% - 200px);
   z-index: 1;
   width: 400px;
 }
