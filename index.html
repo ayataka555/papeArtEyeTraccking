@@ -34,8 +34,8 @@ function deviceOrientation(e) {
   const alpha = e.alpha;
   const beta = e.beta;
   const gamma = e.gamma;
-  let yOffset = parseInt(beta/10) + 1;
-  let xOffset = parseInt(gamma/10) + 1;
+  let yOffset = parseInt(beta * 1.5 / 10);
+  let xOffset = parseInt(gamma * 1.5 / 10);
   $('.pape-eye').css("top", -1 * yOffset + "px");
   $('.pape-eye').css("left", "calc(50% - " + parseInt(200 + xOffset) + "px)");
 }
