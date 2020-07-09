@@ -25,6 +25,7 @@
 <script>
 (function(){
   if (typeof DeviceOrientationEvent.requestPermission === "function") {
+    popupOpen("requestPermissionPopup");
     $(".debug-area").html("ok")
   }
   let yOffset = 0;
