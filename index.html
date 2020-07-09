@@ -39,9 +39,9 @@ function deviceOrientation(e) {
   let alpha = e.alpha;   //. 北極方向に対する向きの角度
   let beta = e.beta;      //. 前後の傾き角度
   let gamma = e.gamma;  //. 左右の傾き角度
-  $('.debug-area').append("alfa:" + alpha);
-  $('.debug-area').append("beta:" + beta );
-  $('.debug-area').append("gamma:" + gamma);
+  $('.debug-area').html("alfa:" + alpha);
+  $('.debug-area').html("beta:" + beta );
+  $('.debug-area').html("gamma:" + gamma);
 }
 
 (function(){
